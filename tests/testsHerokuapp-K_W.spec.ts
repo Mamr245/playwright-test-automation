@@ -152,7 +152,7 @@ test('Shadow DOM Page', async ({ page }) => {
   await expect(page.locator('li').last()).toHaveText("In a list!")
 })
 
-test.only('Shifting Content Page - List', async ({ page }) => {
+test('Shifting Content Page - List', async ({ page }) => {
   const itemsToValidate = [
     'Et numquam et aliquam.',
     'Important Information You\'re Looking For', 
