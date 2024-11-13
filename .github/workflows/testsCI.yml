@@ -27,6 +27,7 @@ jobs:
         retention-days: 30
     - name: Merge CTRF Files 
       run: npx ctrf merge ctrf
+      if: always()
     - name: Publish Test Summary Results
       if: always()
       run: npx github-actions-ctrf ctrf/ctrf-report.json
