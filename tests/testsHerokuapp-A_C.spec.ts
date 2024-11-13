@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
   await expect(page).toHaveTitle('The Internet');
 });
 
-test.only('A/B Testing Page', async ({ page }) => {
+test('A/B Testing Page', async ({ page }) => {
    await pm.navigateTo().abTestingPage()
 
    const title = page.locator('h3', {hasText: "A/B Test Variation 1"})

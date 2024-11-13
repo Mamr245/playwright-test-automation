@@ -10,7 +10,7 @@ test.beforeEach(async ({ page }) => {
   await expect(page).toHaveTitle('The Internet');
 });
 
-test.only('Entry Ad Page', async ({ page }) => {
+test('Entry Ad Page', async ({ page }) => {
     pm.navigateTo().entryAdPage()
 
     await expect(page).toHaveURL('/entry_ad')

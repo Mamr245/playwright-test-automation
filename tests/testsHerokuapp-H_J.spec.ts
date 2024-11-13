@@ -45,7 +45,7 @@ test.describe('Horizontal Slide Page', () => {
     })
 })
   
-test.only('Hovers Page', async ({ page }) => {
+test('Hovers Page', async ({ page }) => {
     await pm.navigateTo().hoversPage()
 
     const users = ['user1', 'user2', 'user3']

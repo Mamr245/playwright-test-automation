@@ -28,3 +28,4 @@ jobs:
     - name: Publish Test Summary Results
       if: always()
       run: npx github-actions-ctrf ctrf/ctrf-report.json
+      run: npx ctrf merge ctrf

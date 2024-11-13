@@ -18,7 +18,7 @@ test('Disappearing Elements Page', async ({ page }) => {
   }
 });
 
-test.only('Drag and Drop Page', async ({ page }) => {
+test('Drag and Drop Page', async ({ page }) => {
   pm.navigateTo().dragAndDropPage()
 
   await expect(page.locator('#column-a')).toBeVisible()
@@ -49,12 +49,13 @@ test.describe('Dynamic Content Page', () => {
     await expect(page.locator('.example')).toContainText('This example demonstrates the ever-evolving nature of content by loading new text and images on each page refresh.')
   });
 
-  test('Dynamic Content Page', async ({ page }) => {
+  test('Dynamic Content Page', async ({ page, baseURL }) => {
     // Validate that images are present
     const images = await page.locator('#content').locator('img').all()
     for (const image of images) {
-      const imgSource = await image.getAttribute('src')
-      const response = await page.request.get(`/${imgSource}`)
+      // console.log(baseURL)
+      const imgSource = await image.getAttribute('src')  
+      const response = await page.request.get(baseURL + imgSource!)
       expect(response.status()).toBe(200)
     }
 
@@ -63,17 +64,17 @@ test.describe('Dynamic Content Page', () => {
     for (const description of descriptions) {
       expect(description).not.toBeEmpty()
       expect(description).not.toHaveText('')
-    }
+    } 
   })
 
-  test('Dynamic Content Page - Static Version', async ({ page }) => {
+  test('Dynamic Content Page - Static Version', async ({ page, baseURL }) => {
     const descriptionLocator = page.locator('.example').locator('[class="large-10 columns"]')
     await page.getByRole('link', { name: 'click here'}).click()
     await expect(page).toHaveURL('/dynamic_content?with_content=static')
 
     // Validate that correct static images are present
-    await expect(page.locator('img[src="/img/avatars/Original-Facebook-Geek-Profile-Avatar-5.jpg"]')).toBeVisible()
-    await expect(page.locator('img[src="/img/avatars/Original-Facebook-Geek-Profile-Avatar-6.jpg"]')).toBeVisible()
+    await expect(page.locator('img[src="/img/avatars/Original-Facebook-Geek-Profile-Avatar-1.jpg"]')).toBeVisible()
+    await expect(page.locator('img[src="/img/avatars/Original-Facebook-Geek-Profile-Avatar-2.jpg"]')).toBeVisible()
 
     // Validate that correct static descriptions are present
     await expect(descriptionLocator.first()).toContainText('Accusantium eius ut architecto neque vel voluptatem vel nam eos minus ullam dolores')
@@ -82,7 +83,7 @@ test.describe('Dynamic Content Page', () => {
     // Validate that dynamic image and description is present
     await expect(page.locator('img').last()).toBeVisible()
     const imgSource = await page.locator('img').last().getAttribute('src')
-    const response = await page.request.get(`/${imgSource}`)
+    const response = await page.request.get(baseURL + imgSource!)
     expect(response.status()).toBe(200)
     await expect(descriptionLocator.last()).not.toHaveText('')
   })
