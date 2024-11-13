@@ -25,7 +25,8 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+    - name: Merge CTRF Files 
+      run: npx ctrf merge ctrf
     - name: Publish Test Summary Results
       if: always()
       run: npx github-actions-ctrf ctrf/ctrf-report.json
-      run: npx ctrf merge ctrf
