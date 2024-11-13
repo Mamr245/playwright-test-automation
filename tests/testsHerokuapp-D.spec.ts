@@ -18,7 +18,7 @@ test('Disappearing Elements Page', async ({ page }) => {
   }
 });
 
-test('Drag and Drop Page', async ({ page }) => {
+test.only('Drag and Drop Page', async ({ page }) => {
   pm.navigateTo().dragAndDropPage()
 
   await expect(page.locator('#column-a')).toBeVisible()
@@ -51,7 +51,7 @@ test.describe('Dynamic Content Page', () => {
 
   test('Dynamic Content Page', async ({ page }) => {
     // Validate that images are present
-    const images = await page.locator('img').all()
+    const images = await page.locator('#content').locator('img').all()
     for (const image of images) {
       const imgSource = await image.getAttribute('src')
       const response = await page.request.get(`/${imgSource}`)

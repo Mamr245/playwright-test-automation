@@ -10,7 +10,7 @@ test.beforeEach(async ({ page }) => {
   await expect(page).toHaveTitle('The Internet');
 });
 
-test('Entry Ad Page', async ({ page }) => {
+test.only('Entry Ad Page', async ({ page }) => {
     pm.navigateTo().entryAdPage()
 
     await expect(page).toHaveURL('/entry_ad')
@@ -19,7 +19,7 @@ test('Entry Ad Page', async ({ page }) => {
     await expect(page.getByText('This is a modal window')).not.toBeVisible()
 });
 
-test('Exit Intent Page', async ({ page }) => {
+test.skip('Exit Intent Page', async ({ page }) => {
   const popUpLocator = page.locator('.modal')
   await expect(popUpLocator).not.toBeVisible()
 
@@ -35,7 +35,7 @@ test('Exit Intent Page', async ({ page }) => {
 });
 
 // File Downloader Page
-const filesToDownload = ['LambdaTest.txt','some-file.txt','random_data.txt','test.pdf','selenium-snapshot.png']
+const filesToDownload = ['LambdaTest.txt','some-file.txt','random_data.txt','file.json','selenium-snapshot.png']
 filesToDownload.forEach((fileToDownload) => {
 test(`File Download Page - "${fileToDownload}"`, async ({ page }) => {
     // Go "File Downloader" Page

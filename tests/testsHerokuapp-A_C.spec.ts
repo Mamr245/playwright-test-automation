@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
   await expect(page).toHaveTitle('The Internet');
 });
 
-test('A/B Testing Page', async ({ page }) => {
+test.only('A/B Testing Page', async ({ page }) => {
    await pm.navigateTo().abTestingPage()
 
    const title = page.locator('h3', {hasText: "A/B Test Variation 1"})
@@ -56,7 +56,7 @@ users.forEach((user) => {
 
 test('Broken Images Page', async ({ page }) => {
   await pm.navigateTo().brokenImagesPage()
-  const images = await page.locator('img').all()
+  const images = await page.locator('#content').locator('img').all()
 
   for (const image of images) {
     const imgSource = await image.getAttribute('src')

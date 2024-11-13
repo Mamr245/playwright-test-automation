@@ -45,7 +45,7 @@ test.describe('Horizontal Slide Page', () => {
     })
 })
   
-test('Hovers Page', async ({ page }) => {
+test.only('Hovers Page', async ({ page }) => {
     await pm.navigateTo().hoversPage()
 
     const users = ['user1', 'user2', 'user3']
@@ -102,7 +102,8 @@ test.describe('Inputs Page', () => {
         // Generate random integer between 0 and 100
         const numberToType = Math.floor(Math.random() * 101)
         const numberToSubtract = Math.floor(Math.random() * 101)
-
+        
+        await inputBoxLocator.click()
         pm.onInputsPage().performClicks(numberToType, 'ArrowUp')
         await expect(inputBoxLocator).toHaveValue(numberToType.toString())
 

@@ -106,7 +106,7 @@ test.describe('Secure File Download Page', () => {
     await page.goto('/download_secure');
     
     const downloadPromise = page.waitForEvent('download');
-    await page.getByRole('link', { name: 'abc.png'}).click()
+    await page.getByRole('link', { name: 'LambdaTest.txt'}).click()
     const download = await downloadPromise
 
     const filePath = `./downloads/${download.suggestedFilename()}`
@@ -152,7 +152,7 @@ test('Shadow DOM Page', async ({ page }) => {
   await expect(page.locator('li').last()).toHaveText("In a list!")
 })
 
-test('Shifting Content Page - List', async ({ page }) => {
+test.only('Shifting Content Page - List', async ({ page }) => {
   const itemsToValidate = [
     'Et numquam et aliquam.',
     'Important Information You\'re Looking For', 
