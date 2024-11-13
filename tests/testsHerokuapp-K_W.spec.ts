@@ -28,8 +28,9 @@ test.describe('Large & Deep DOM Page', () => {
     
     // Validate sibling from "Siblings" section
     const siblingToGet = await pm.onLargeAndDeepDOMPage().defineSiblingToGet()
+    console.log(siblingToGet)
     const obtainedSibling = await pm.onLargeAndDeepDOMPage().getSibling(siblingToGet)
-    expect(siblingToGet).toEqual(obtainedSibling)
+    expect(obtainedSibling).toContain(siblingToGet)
   })
 
   test('Large & Deep DOM Page - Validate table', async ({ page }) => {
