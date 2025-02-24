@@ -72,11 +72,19 @@ test.describe('Dynamic Content Page', () => {
     await page.getByRole('link', { name: 'click here'}).click()
     await expect(page).toHaveURL('/dynamic_content?with_content=static')
 
-    // Validate that correct static images are present
-    await expect(page.locator('img[src="/img/avatars/Original-Facebook-Geek-Profile-Avatar-1.jpg"]')).toBeVisible()
-    await expect(page.locator('img[src="/img/avatars/Original-Facebook-Geek-Profile-Avatar-2.jpg"]')).toBeVisible()
+    // Get static images src attribute
+    const firstImageSrc = await page.locator('#content').locator('img').first().getAttribute('src');
+    const secondImageSrc = await page.locator('#content').locator('img').nth(1).getAttribute('src');
 
     // Validate that correct static descriptions are present
+    await expect(descriptionLocator.first()).toContainText('Accusantium eius ut architecto neque vel voluptatem vel nam eos minus ullam dolores')
+    await expect(descriptionLocator.nth(1)).toContainText('Omnis fugiat porro vero quas tempora quis eveniet ab officia cupiditate culpa repellat debitis itaque possimus odit dolorum et iste quibusdam quis dicta autem sint vel quo vel consequuntur dolorem nihil neque sunt aperiam blanditiis')
+    
+    // Reload page and verify that static content hasn't changed
+    await page.reload();
+    expect( await page.locator('#content').locator('img').first().getAttribute('src')).toEqual(firstImageSrc)
+    expect( await page.locator('#content').locator('img').nth(1).getAttribute('src')).toEqual(secondImageSrc)
+
     await expect(descriptionLocator.first()).toContainText('Accusantium eius ut architecto neque vel voluptatem vel nam eos minus ullam dolores')
     await expect(descriptionLocator.nth(1)).toContainText('Omnis fugiat porro vero quas tempora quis eveniet ab officia cupiditate culpa repellat debitis itaque possimus odit dolorum et iste quibusdam quis dicta autem sint vel quo vel consequuntur dolorem nihil neque sunt aperiam blanditiis')
 
