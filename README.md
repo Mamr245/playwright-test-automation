@@ -1,15 +1,14 @@
 <h1 align="center">Playwright Automation Project :computer:</h1> 
 
-### :question: What is it about?
-This project is a set of automated tests performed on https://the-internet.herokuapp.com/. 
-This website contains several automation challenges that gave me the opportunity to use a wide variety of features present within Playwright.
-The goal was to apply what I learned during the course [Playwright: Web Automation Testing From Zero to Hero](https://www.udemy.com/course/playwright-from-zero-to-hero/).
-It runs everyday using GitHub Actions and the results can be checked [here](https://github.com/Mamr245/playwright-test-automation/actions). 
+### :question: What is this?
+This project contains automated tests for https://the-internet.herokuapp.com/. 
+It helped me explore many Playwright features while applying what I learned in the course [Playwright: Web Automation Testing From Zero to Hero](https://www.udemy.com/course/playwright-from-zero-to-hero/).
+It runs every Wednesday using GitHub Actions and you can check the results [here](https://github.com/Mamr245/playwright-test-automation/actions). 
 
-### :hammer: Used Technologies
+### :hammer: Technologies used
 `Playwright` `VSCode`
 
 ### :speech_balloon: Have any suggestions or have found an issue? 
-Feel free to tell me about it :speech_balloon: I'm always looking to improve!
+Feel free to reach out! I'm always open to feedback and eager to improve.
 
-<h2 align="center">Thanks for coming! :wave:</h2>
+<h2 align="center">Thanks for visiting! :wave:</h2>
