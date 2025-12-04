@@ -81,20 +81,6 @@ test('Redirect Link Page', async ({ page }) => {
   await expect(page).toHaveURL('/status_codes')
 });
 
-test('Typos Page', async ({ page }) => {
-  await pm.navigateTo().typosPage()
-
-  await expect(page.locator(':text("Typos")')).toBeVisible()
-
-  const expectedFirstSentence = "This example demonstrates a typo being introduced. It does it randomly on each page load."
-  const expectedSecondSentence = "Sometimes you'll see a typo, other times you won't."
-  const firstSentence =  page.locator('p').first()
-  const secondSentence = page.locator('p').last()
-
-  await expect(firstSentence).toHaveText(expectedFirstSentence)
-  await expect(secondSentence).toHaveText(expectedSecondSentence)
-});
-
 test.describe('Secure File Download Page', () => {
   test('Secure File Download Page - Download File', async ({ browser }) => {
     const context = await browser.newContext({
@@ -207,4 +193,18 @@ test.describe('Status Codes Page', () => {
       expect(response.status()).toEqual(parseInt(statusCodeToTest))
     });
   });
+});
+
+test('Typos Page', async ({ page }) => {
+  await pm.navigateTo().typosPage()
+
+  await expect(page.locator(':text("Typos")')).toBeVisible()
+
+  const expectedFirstSentence = "This example demonstrates a typo being introduced. It does it randomly on each page load."
+  const expectedSecondSentence = "Sometimes you'll see a typo, other times you won't."
+  const firstSentence =  page.locator('p').first()
+  const secondSentence = page.locator('p').last()
+
+  await expect(firstSentence).toHaveText(expectedFirstSentence)
+  await expect(secondSentence).toHaveText(expectedSecondSentence)
 });
