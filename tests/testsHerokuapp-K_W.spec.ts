@@ -173,7 +173,7 @@ test('Shifting Content Page - List', async ({ page }) => {
   }
 });
 
-test('Slow Resources Page', async ({ page }) => {
+test.fail('Slow Resources Page @brokenFeatures', async ({ page }) => {
   test.setTimeout(60000);
 
   await pm.navigateTo().slowResourcesPage()
