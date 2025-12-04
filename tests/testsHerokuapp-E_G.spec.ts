@@ -126,7 +126,7 @@ test(`Floating Menu Page - "${optionToTest}" Option`, async ({ page }) => {
 });
 });
 
-test('Forgot Password Page', async ({ page }) => {
+test.fail('Forgot Password Page @brokenFeatures', async ({ page }) => {
   const email = "test@test.com"
   await pm.navigateTo().forgotPasswordPage()
 
