@@ -54,7 +54,7 @@ users.forEach((user) => {
   });
 });
 
-test('Broken Images Page', async ({ page }) => {
+test.fail('Broken Images Page @brokenFeatures', async ({ page }) => {
   await pm.navigateTo().brokenImagesPage()
   const images = await page.locator('#content').locator('img').all()
 
