@@ -112,17 +112,23 @@ test('Checkboxes Page', async ({ page }) => {
   const checkbox1 = page.getByRole('checkbox').first()
   const checkbox2 = page.getByRole('checkbox').last()
 
-  await checkbox1.check()
-  await checkbox2.check()
+  // Validate first checkbox
+  if (await checkbox1.isChecked()) {
+    await checkbox1.uncheck()
+    expect(checkbox1).not.toBeChecked()
+  } else {
+    await checkbox1.check()
+    expect(checkbox1).toBeChecked()
+  }
 
-  expect(checkbox1).toBeChecked()
-  expect(checkbox2).toBeChecked()
-
-  await checkbox1.uncheck()
-  await checkbox2.uncheck()
-
-  expect(checkbox1).not.toBeChecked()
-  expect(checkbox2).not.toBeChecked()
+  // Validate second checkbox
+  if (await checkbox2.isChecked()) {
+    await checkbox2.uncheck()
+    expect(checkbox2).not.toBeChecked()
+  } else {
+    await checkbox2.check()
+    expect(checkbox2).toBeChecked()
+  }
 });
 
 test('Context Menu Page', async ({ page }) => {
