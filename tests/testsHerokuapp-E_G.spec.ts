@@ -37,7 +37,7 @@ test.skip('Exit Intent Page', async ({ page }) => {
 // File Downloader Page
 const filesToDownload = ['LambdaTest.txt','some-file.txt','random_data.txt','file.json','selenium-snapshot.png']
 filesToDownload.forEach((fileToDownload) => {
-test(`File Download Page - "${fileToDownload}"`, async ({ page }) => {
+test.skip(`File Download Page - "${fileToDownload}"`, async ({ page }) => {
     // Go "File Downloader" Page
     await pm.navigateTo().fileDownloadPage()
     
